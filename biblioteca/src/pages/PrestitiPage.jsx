@@ -143,10 +143,10 @@ export default function PrestitiPage() {
     <div className="container-fluid bg-black text-white min-vh-100 p-4 pt-5 px-5">
 
       {/* HEADER */}
-      <div className="mb-5">
-        <div className="d-flex align-items-center gap-2">
+      <div className="mb-5 text-center">
+        <div className="align-items-center gap-2 text-center">
           <FaBook size={35} />
-          <h2 className=" fs-1 fw-bold m-0 mb-2">Dashboard Prestiti</h2>
+          <h2 className="fs-1 fw-bold m-0 mb-2">Dashboard Prestiti</h2>
         </div>
         <p className="text-white-50 mb-0 fs-4">
           Gestione completa dei prestiti della biblioteca

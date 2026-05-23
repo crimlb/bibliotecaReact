@@ -6,7 +6,7 @@ import FormLibro from '../components/admin/libri/FormLibro'
 import TableLibri from '../components/admin/libri/TableLibri'
 import Toast from '../components/admin/Toast'
 import { libriAPI, prestitiAPI } from '../services/api'
-
+import { deleteLibro } from '../api/libri'
 export default function AdminPage() {
   const [libri, setLibri] = useState([])
   const [prestiti, setPrestiti] = useState([])
@@ -34,6 +34,12 @@ export default function AdminPage() {
     setLibri(prev => [nuovo, ...prev])
     showToast('Libro aggiunto')
   }
+
+  const elimina = async (id) => {
+  await deleteLibro(id)
+  setLibri(prev => prev.filter(l => l.id !== id))
+  showToast('Libro eliminato')
+}
 
   const filtered = libri.filter(l =>
     l.titolo?.toLowerCase().includes(ricerca.toLowerCase()) ||
@@ -94,6 +100,7 @@ export default function AdminPage() {
         showToast={showToast}
         ricerca={ricerca}
         setRicerca={setRicerca}
+        onElimina={elimina}
       />
     </div>
   )
