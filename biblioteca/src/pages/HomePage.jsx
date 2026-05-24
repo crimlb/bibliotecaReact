@@ -6,7 +6,7 @@ import { prestitiAPI } from '../services/api'
 
 import CatalogoLibri from '../components/home/CatalogoLibri'
 import ModalPrestito from '../components/home/ModalPrestito'
-import Toast from '../components/home/Toast'
+import Toast from '../components/admin/Toast'
 
 export default function HomePage() {
   const { utente } = useAuth()

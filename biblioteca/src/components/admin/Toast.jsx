@@ -9,17 +9,45 @@ export default function Toast({ messaggio, tipo, onClose }) {
     return () => clearTimeout(timer)
   }, [onClose])
 
-  return (
-    <div
-   className={`position-fixed top-0 start-50 translate-middle-x mt-4 alert ${
-  tipo === 'successo'
-    ? 'alert-success border-success'
-    : 'alert-danger border-danger'
-} shadow-lg`}
-      style={{ minWidth: '300px', zIndex: 9999, cursor: 'pointer' }}
-      onClick={onClose}
-    >
-      {messaggio}
-    </div>
+   return (
+    <>
+      {/* BACKDROP soft */}
+      <div
+        className="modal-backdrop fade show"
+        onClick={onClose}
+        style={{ opacity: 0.25 }}
+      />
+
+      {/* TOAST CARD */}
+      <div
+        className="position-fixed top-50 start-50 translate-middle shadow-lg rounded-4 overflow-hidden"
+        style={{
+          minWidth: '380px',
+          zIndex: 1055,
+          cursor: 'pointer'
+        }}
+        onClick={onClose}
+      >
+        {/* HEADER COLORATO stile Bootstrap */}
+        <div
+          className={`px-3 py-2 text-white fw-semibold ${
+            tipo === 'successo' ? 'bg-success' : 'bg-danger'
+          }`}
+          style={{ letterSpacing: '.3px' }}
+        >
+          {tipo === 'successo' ? 'Operazione completata' : 'Attenzione'}
+        </div>
+
+        {/* BODY */}
+        <div className="bg-white px-4 py-4 fs-6 text-dark">
+          {messaggio}
+        </div>
+
+        {/* FOOTER piccolo hint */}
+        <div className="bg-light px-3 py-2 text-muted small text-end">
+          chiudi
+        </div>
+      </div>
+    </>
   )
 }
