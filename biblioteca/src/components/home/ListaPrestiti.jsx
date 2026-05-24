@@ -42,7 +42,7 @@ export default function ListaPrestiti({
   )
 
   const Section = ({ children, colorClass }) => (
-    <div className={`rounded-4 bg-black border-${colorClass}`}>
+    <div className={`rounded-4   border-${colorClass}`}>
       {children}
     </div>
   )
@@ -107,7 +107,7 @@ export default function ListaPrestiti({
 
           <SectionHeader
             icon={FaExclamationTriangle}
-            title="In ritardo"
+            title="Richiede Attenzione"
             count={ritardo.length}
             color="danger"
           />
@@ -133,7 +133,7 @@ export default function ListaPrestiti({
 
           <SectionHeader
             icon={FaHistory}
-            title="Archivio"
+            title="Storico completo"
             count={restituiti.length}
             color="secondary"
           />

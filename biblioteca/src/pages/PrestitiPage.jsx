@@ -174,14 +174,14 @@ export default function PrestitiPage() {
 
             <div className="col-6 col-md-3">
               <div className="bg-danger bg-opacity-25 border border-danger rounded-3 p-3 text-center">
-                <div className="text-danger small">Ritardo</div>
+                <div className="text-danger">Ritardo</div>
                 <div className="fs-4 fw-bold text-danger">{conteggio.ritardo}</div>
               </div>
             </div>
 
             <div className="col-6 col-md-3">
               <div className="bg-secondary bg-opacity-25 border border-secondary rounded-3 p-3 text-center">
-                <div className="text-secondary small">Restituiti</div>
+                <div className="text-secondary">Restituiti</div>
                 <div className="fs-4 fw-bold text-secondary">{conteggio.restituiti}</div>
               </div>
             </div>
