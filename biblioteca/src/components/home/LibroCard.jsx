@@ -3,11 +3,10 @@ export default function LibroCard({ libro, onPrestito, isAdmin, onElimina }) {
 
     return (
         <div
-            className={`position-relative h-100 d-flex flex-column overflow-hidden rounded-4 border ${
-                disponibile
+            className={`position-relative h-100 d-flex flex-column overflow-hidden rounded-4 border ${disponibile
                     ? 'border-success border-opacity-25'
                     : 'border-secondary border-opacity-25'
-            }`}
+                }`}
             style={{
                 background: '#0d0d0d',
                 minHeight: '480px',
@@ -57,11 +56,10 @@ export default function LibroCard({ libro, onPrestito, isAdmin, onElimina }) {
                 <div className="position-relative z-1 h-100 d-flex flex-column">
                     {libro.genere && (
                         <span
-                            className={`badge rounded-pill px-3 py-2 border fw-normal ${
-                                disponibile
+                            className={`badge rounded-pill px-3 py-2 border fw-normal ${disponibile
                                     ? 'bg-success bg-opacity-10 text-success border-success border-opacity-25'
                                     : 'bg-secondary bg-opacity-10 text-secondary border-secondary border-opacity-25'
-                            }`}
+                                }`}
                             style={{ fontSize: '0.8rem', letterSpacing: '.14em', alignSelf: 'flex-start' }}
                         >
                             {libro.genere.toUpperCase()}
@@ -90,9 +88,8 @@ export default function LibroCard({ libro, onPrestito, isAdmin, onElimina }) {
                             style={{ alignItems: 'flex-start' }}
                         >
                             <div
-                                className={`rounded-circle flex-shrink-0 ${
-                                    disponibile ? 'bg-success' : 'bg-secondary'
-                                }`}
+                                className={`rounded-circle flex-shrink-0 ${disponibile ? 'bg-success' : 'bg-secondary'
+                                    }`}
                                 style={{
                                     width: '8px',
                                     height: '8px',
@@ -100,11 +97,10 @@ export default function LibroCard({ libro, onPrestito, isAdmin, onElimina }) {
                                 }}
                             />
                             <span
-                                className={`${
-                                    disponibile
+                                className={`${disponibile
                                         ? 'text-success text-opacity-75'
                                         : 'text-secondary text-opacity-75'
-                                }`}
+                                    }`}
                                 style={{
                                     fontSize: '1rem',
                                     letterSpacing: '.08em',
@@ -155,9 +151,8 @@ export default function LibroCard({ libro, onPrestito, isAdmin, onElimina }) {
                                     DISPONIBILITÀ
                                 </div>
                                 <div
-                                    className={`fw-semibold ${
-                                        disponibile ? 'text-success' : 'text-danger'
-                                    }`}
+                                    className={`fw-semibold ${disponibile ? 'text-success' : 'text-danger'
+                                        }`}
                                     style={{ fontSize: '1rem' }}
                                 >
                                     {disponibile
@@ -173,9 +168,8 @@ export default function LibroCard({ libro, onPrestito, isAdmin, onElimina }) {
                                     COPIE
                                 </div>
                                 <div
-                                    className={`fw-bold ${
-                                        disponibile ? 'text-white' : 'text-danger opacity-50'
-                                    }`}
+                                    className={`fw-bold ${disponibile ? 'text-white' : 'text-danger opacity-50'
+                                        }`}
                                     style={{ fontSize: '3rem', lineHeight: 1 }}
                                 >
                                     {libro.quantita ?? 0}
@@ -198,28 +192,62 @@ export default function LibroCard({ libro, onPrestito, isAdmin, onElimina }) {
 
                 {/* FOOTER — ancorato in basso da justify-content-between */}
                 <div className="d-flex gap-2 mt-4">
-                    <button
-                        className={`btn flex-grow-1 rounded-4 py-3 fw-semibold ${
-                            disponibile ? 'btn-success' : 'btn-outline-secondary'
-                        }`}
-                        style={{ letterSpacing: '.14em', fontSize: '.76rem' }}
-                        onClick={() => onPrestito(libro)}
-                        disabled={!disponibile}
-                    >
-                        PRESTITO
-                    </button>
+
+                    {!isAdmin && (
+                        <button
+                            className={`btn flex-grow-1 rounded-4 py-3 fw-semibold ${disponibile ? 'btn-success' : 'btn-outline-secondary'
+                                }`}
+                            style={{ letterSpacing: '.14em', fontSize: '.76rem' }}
+                            onClick={() => onPrestito(libro)}
+                            disabled={!disponibile}
+                        >
+                            PRESTITO
+                        </button>
+                    )}
 
                     {isAdmin && (
-                        <button
-                            className="btn btn-outline-danger rounded-4 px-4"
-                            onClick={() => onElimina(libro.id)}
-                            title="Elimina libro"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1z"/>
-                            </svg>
-                        </button>
+                       <div className="w-100">
+    <button
+        className="btn btn-outline-danger w-100 rounded-4 fw-semibold border-2
+        d-grid align-items-center"
+        style={{
+            gridTemplateColumns: '1fr auto 1fr',
+            minHeight: '46px',
+            fontSize: '0.68rem',
+            letterSpacing: '.05em',
+            padding: '0.65rem .75rem',
+            overflow: 'hidden'
+        }}
+        onClick={() => onElimina(libro.id)}
+        title="Elimina libro"
+    >
+        <span></span>
+
+        <span
+            className="text-center fw-normal fs-6"
+            style={{
+                minWidth: 0,
+                whiteSpace: 'nowrap'
+            }}
+        >
+            Elimina Libro
+        </span>
+
+        <span className="d-flex justify-content-end">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="13"
+                height="13"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+                className="flex-shrink-0"
+            >
+                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1z" />
+            </svg>
+        </span>
+    </button>
+</div>
                     )}
                 </div>
             </div>

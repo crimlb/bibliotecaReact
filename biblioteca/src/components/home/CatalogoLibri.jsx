@@ -26,8 +26,8 @@ function Paginazione({ paginaCorrente, totalePagine, onCambia }) {
             <p className="text-white-50 mb-0" style={{ fontSize: '.8rem', letterSpacing: '.1em' }}>
                 Pagina {paginaCorrente} di {totalePagine}
             </p>
-            <nav aria-label="Navigazione pagine">
-                <ul className="pagination pagination-sm mb-0 gap-2 p-1">
+            <nav aria-label="Navigazione pagine"  className="w-100 overflow-auto">
+                <ul className="pagination pagination-sm mb-0  flex-nowrap justify-content-center p-1">
                     {/* PRECEDENTE */}
                     <li className={`page-item ${paginaCorrente === 1 ? 'disabled' : ''}`}>
                         <button
