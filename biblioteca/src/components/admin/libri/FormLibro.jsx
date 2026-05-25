@@ -22,6 +22,7 @@ export default function FormLibro({
 
   const [form, setForm] = useState(iniziale || FORM_VUOTO)
   const [errore, setErrore] = useState(null)
+  const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false)
 
   const isModifica = !!iniziale?.id
@@ -33,9 +34,53 @@ export default function FormLibro({
     }))
   }
 
+  function validate(form) {
+    const newErrors = {}
+
+    if (!form.titolo.trim()) {
+      newErrors.titolo = 'Titolo obbligatorio'
+    }
+
+    if (!form.autore.trim()) {
+      newErrors.autore = 'Autore obbligatorio'
+    }
+
+    if (!form.isbn.trim()) {
+      newErrors.isbn = 'ISBN obbligatorio'
+    }
+
+    if (!form.anno_pubblicazione) {
+      newErrors.anno_pubblicazione = 'Anno obbligatorio'
+    } else {
+      const anno = parseInt(form.anno_pubblicazione)
+
+      if (isNaN(anno)) {
+        newErrors.anno_pubblicazione = 'Anno non valido'
+      }
+
+      if (anno > ANNO_CORRENTE) {
+        newErrors.anno_pubblicazione = 'Anno non può essere futuro'
+      }
+
+      if (anno < 0) {
+        newErrors.anno_pubblicazione = 'Anno non valido'
+      }
+    }
+
+    return newErrors
+  }
+
   const submit = async (e) => {
     e.preventDefault()
 
+    const validationErrors = validate(form)
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors)
+      return
+    }
+
+    setErrors({})
     setErrore(null)
     setLoading(true)
 
@@ -94,62 +139,79 @@ export default function FormLibro({
 
       <div className="row g-3">
 
+        {/* TITOLO */}
         <div className="col-12 col-lg-6">
-          <label className="form-label">
-            Titolo
-          </label>
+          <label className="form-label">Titolo*</label>
 
           <input
-            className="form-control bg-dark text-light border-success"
+            className={`form-control bg-dark text-light border-success ${errors.titolo ? 'is-invalid' : ''}`}
             value={form.titolo}
             onChange={(e) => set('titolo', e.target.value)}
-            required
           />
+
+          {errors.titolo && (
+            <div className="invalid-feedback">
+              {errors.titolo}
+            </div>
+          )}
         </div>
 
+        {/* AUTORE */}
         <div className="col-12 col-lg-6">
-          <label className="form-label">
-            Autore
-          </label>
+          <label className="form-label">Autore*</label>
 
           <input
-            className="form-control bg-dark text-light border-success"
+            className={`form-control bg-dark text-light border-success ${errors.autore ? 'is-invalid' : ''}`}
             value={form.autore}
             onChange={(e) => set('autore', e.target.value)}
-            required
           />
+
+          {errors.autore && (
+            <div className="invalid-feedback">
+              {errors.autore}
+            </div>
+          )}
         </div>
 
+        {/* ISBN */}
         <div className="col-12 col-md-6">
-          <label className="form-label">
-            ISBN
-          </label>
+          <label className="form-label">ISBN*</label>
 
           <input
-            className="form-control bg-dark text-light border-success"
+            className={`form-control bg-dark text-light border-success ${errors.isbn ? 'is-invalid' : ''}`}
             value={form.isbn}
             onChange={(e) => set('isbn', e.target.value)}
           />
+
+          {errors.isbn && (
+            <div className="invalid-feedback">
+              {errors.isbn}
+            </div>
+          )}
         </div>
 
+        {/* ANNO */}
         <div className="col-6 col-md-3">
-          <label className="form-label">
-            Anno
-          </label>
+          <label className="form-label">Anno*</label>
 
           <input
             type="number"
-            className="form-control bg-dark text-light border-success"
+            className={`form-control bg-dark text-light border-success ${errors.anno_pubblicazione ? 'is-invalid' : ''}`}
             value={form.anno_pubblicazione}
             onChange={(e) => set('anno_pubblicazione', e.target.value)}
             max={ANNO_CORRENTE}
           />
+
+          {errors.anno_pubblicazione && (
+            <div className="invalid-feedback">
+              {errors.anno_pubblicazione}
+            </div>
+          )}
         </div>
 
+        {/* QUANTITÀ */}
         <div className="col-6 col-md-3">
-          <label className="form-label">
-            Quantità
-          </label>
+          <label className="form-label">Quantità</label>
 
           <input
             type="number"
@@ -160,10 +222,9 @@ export default function FormLibro({
           />
         </div>
 
+        {/* GENERE */}
         <div className="col-12">
-          <label className="form-label">
-            Genere
-          </label>
+          <label className="form-label">Genere</label>
 
           <input
             className="form-control bg-dark text-light border-success"
@@ -174,6 +235,7 @@ export default function FormLibro({
 
       </div>
 
+      {/* BOTTONI */}
       <div className="d-flex justify-content-end gap-2 mt-4">
 
         {onAnnulla && (
