@@ -8,7 +8,7 @@
 
 <img width="1919" height="859" alt="loginPage-biblioteca" src="https://github.com/user-attachments/assets/91112be9-ed28-4ba6-91de-cd66edeb9ddd" />
 <img width="1917" height="861" alt="registerPage" src="https://github.com/user-attachments/assets/5eb7560c-909a-48b1-b473-562262d5513a" />
-<img width="1919" height="871" alt="homePage-catalogo" src="https://github.com/user-attachments/assets/cbda28eb-bf15-4116-afa1-fbee425bd207" />
+
 <img width="1919" height="869" alt="modalePrestitoLibri" src="https://github.com/user-attachments/assets/48f479ba-2570-444f-b3f5-94602b4a1fb8" />
 <img width="1919" height="866" alt="dashboardPrestiti" src="https://github.com/user-attachments/assets/a9bcb16f-eb90-4f88-9380-483f111b7e46" />
 <img width="1573" height="852" alt="dashboardPrestitiTable" src="https://github.com/user-attachments/assets/ff1174ec-694a-4adb-bf5c-e6ecfd85aa54" />
