@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 
 export default function Toast({ messaggio, tipo, onClose }) {
+  
   useEffect(() => {
     const timer = setTimeout(() => {
       onClose()
@@ -12,18 +13,18 @@ export default function Toast({ messaggio, tipo, onClose }) {
    return (
     <>
       {/* BACKDROP soft */}
-      <div
+      {/* <div
         className="modal-backdrop fade show"
         onClick={onClose}
         style={{ opacity: 0.25 }}
-      />
+      /> */}
 
       {/* TOAST CARD */}
       <div
         className="position-fixed top-50 start-50 translate-middle shadow-lg rounded-4 overflow-hidden"
         style={{
           minWidth: '380px',
-          zIndex: 1055,
+          zIndex: 99999,
           cursor: 'pointer'
         }}
         onClick={onClose}

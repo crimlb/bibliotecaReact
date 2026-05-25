@@ -57,8 +57,9 @@ async function request(method, path, body = null) {
 
    // 🔥 FIX PRINCIPALE: prima status HTTP
   if (!res.ok) {
-    const err = new Error(data.errore || `Errore HTTP ${res.status}`)
+    const err = new Error(data.errore ||  data.message || `Errore HTTP ${res.status}`)
     err.status = res.status
+     err.data = data
     throw err
   }
 

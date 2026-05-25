@@ -62,6 +62,33 @@ export default function HomePage() {
     libro={libroSelezionato}
 
     onConferma={async (id, data) => {
+
+ if(!data){
+  setToast({
+    messaggio:'Seleziona una data di prestito',
+    tipo:'errore'
+  })
+  return
+}
+
+const oggi= new Date()
+oggi.setHours(0,0,0,0)
+
+const dataPrestito= new Date(data)
+dataPrestito.setHours(0,0,0,0)
+
+
+if(dataPrestito.getTime() < oggi.getTime()){
+  setToast({
+    messaggio: "La data di restituzione deve essere successiva ad oggi" ,
+    tipo: 'errore'
+  })
+  return
+}
+
+
+
+
       try {
 
         // crea prestito
@@ -98,9 +125,13 @@ export default function HomePage() {
       } catch (err) {
 
         setToast({
-          messaggio: err.message,
-          tipo: 'errore'
-        })
+      messaggio:
+        err?.data?.errore ||
+         err?.data?.message ||
+        err.message ||
+        'Errore',
+      tipo: 'errore'
+    })
       }
     }}
 
