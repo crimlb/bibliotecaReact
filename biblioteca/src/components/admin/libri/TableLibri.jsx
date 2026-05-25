@@ -6,7 +6,12 @@ export default function TableLibri({
   ricerca,
   setRicerca,
   onModifica,
-  onElimina
+  onElimina,
+  onIncrementa,
+  onDecrementa,
+  loadingCopieId,
+  selectedLibroId,
+setSelectedLibroId
 }) {
   const filtered = libri.filter(l =>
     l.titolo?.toLowerCase().includes(ricerca.toLowerCase()) ||
@@ -48,12 +53,20 @@ export default function TableLibri({
             <tbody>
               {filtered.length > 0 ? (
                 filtered.map(l => (
+
+
                   <RigaLibro
                     key={l.id}
                     libro={l}
+                    selectedLibroId={selectedLibroId}
                     onModifica={onModifica}
                     onElimina={onElimina}
+                    onIncrementa={onIncrementa}
+                    onDecrementa={onDecrementa}
+                    loadingCopieId={loadingCopieId === l.id}
                   />
+
+
                 ))
               ) : (
                 <tr>

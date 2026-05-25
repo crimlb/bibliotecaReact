@@ -79,4 +79,26 @@ router.get('/:id', autenticato, regolaId, validate, controller.getById);
 router.patch('/:id', autenticato, regolaAggiorna, validate, controller.aggiorna);
 router.delete('/:id', autenticato, soloAdmin, regolaId, validate, controller.elimina);
 
+
+// ➕ Incrementa copie (ADMIN)
+router.patch(
+  '/:id/incrementa-copie',
+  autenticato,
+  soloAdmin,
+  regolaId,
+  validate,
+  controller.incrementaCopie
+);
+
+// ➖ Decrementa copie (ADMIN)
+router.patch(
+  '/:id/decrementa-copie',
+  autenticato,
+  soloAdmin,
+  regolaId,
+  validate,
+  controller.decrementaCopie
+);
+
+
 module.exports = router;

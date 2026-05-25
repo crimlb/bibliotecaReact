@@ -55,4 +55,29 @@ const elimina = async (req, res, next) => {
   } catch (err) { next(err); }
 };
 
-module.exports = { crea, getAll, getById, getByISBN, aggiorna, elimina };
+
+// PATCH /:id/incrementa-copie (ADMIN)
+const incrementaCopie = async (req, res, next) => {
+  try {
+    const id = parseInt(req.params.id);
+    const libro = await libriService.incrementaCopie(id);
+    res.json({ successo: true, dati: libro });
+  } catch (err) {
+    next(err);
+  }
+};
+
+// PATCH /:id/decrementa-copie (ADMIN)
+const decrementaCopie = async (req, res, next) => {
+  try {
+    const id = parseInt(req.params.id);
+    const libro = await libriService.decrementaCopie(id);
+    res.json({ successo: true, dati: libro });
+  } catch (err) {
+    next(err);
+  }
+};
+
+
+module.exports = { crea, getAll, getById, getByISBN, aggiorna, elimina,  incrementaCopie,
+  decrementaCopie };

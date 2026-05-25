@@ -6,15 +6,22 @@ import FormLibro from '../components/admin/libri/FormLibro'
 import TableLibri from '../components/admin/libri/TableLibri'
 import Toast from '../components/admin/Toast'
 import { libriAPI, prestitiAPI } from '../services/api'
-import { deleteLibro } from '../api/libri'
+import { useLocation } from 'react-router-dom'
+
+
 export default function AdminPage() {
   const [libri, setLibri] = useState([])
   const [prestiti, setPrestiti] = useState([])
   const [toast, setToast] = useState(null)
   const [loading, setLoading] = useState(true)
   const [ricerca, setRicerca] = useState('')
+  const [loadingCopieId, setLoadingCopieId] = useState(null)
 
   const showToast = (m, t = 'successo') => setToast({ messaggio: m, tipo: t })
+  const location = useLocation()
+ const [selectedLibroId, setSelectedLibroId] = useState(
+  location.state?.selectedLibroId || null
+)
 
   useEffect(() => {
     Promise.all([libriAPI.getAll(), prestitiAPI.getAll()])
@@ -35,11 +42,12 @@ export default function AdminPage() {
     showToast('Libro aggiunto')
   }
 
+
   const elimina = async (id) => {
-  await deleteLibro(id)
-  setLibri(prev => prev.filter(l => l.id !== id))
-  showToast('Libro eliminato')
-}
+    await libriAPI.elimina(id)
+    setLibri(prev => prev.filter(l => l.id !== id))
+    showToast('Libro eliminato')
+  }
 
   const filtered = libri.filter(l =>
     l.titolo?.toLowerCase().includes(ricerca.toLowerCase()) ||
@@ -53,6 +61,58 @@ export default function AdminPage() {
       </div>
     )
   }
+
+
+  const incrementaCopie = async (id) => {
+    try {
+      setLoadingCopieId(id)
+
+      // optimistic UI (subito visivo)
+      setLibri(prev =>
+        prev.map(l =>
+          l.id === id ? { ...l, quantita: l.quantita + 1 } : l
+        )
+      )
+
+      const updated = await libriAPI.incrementaCopie(id)
+
+      setLibri(prev =>
+        prev.map(l => l.id === id ? updated : l)
+      )
+
+      showToast('Copie aumentate')
+    } finally {
+      setLoadingCopieId(null)
+    }
+  }
+
+
+
+  const decrementaCopie = async (id) => {
+    try {
+      setLoadingCopieId(id)
+
+      setLibri(prev =>
+        prev.map(l =>
+          l.id === id
+            ? { ...l, quantita: Math.max(l.quantita - 1, 0) }
+            : l
+        )
+      )
+
+      const updated = await libriAPI.decrementaCopie(id)
+
+      setLibri(prev =>
+        prev.map(l => l.id === id ? updated : l)
+      )
+
+      showToast('Copie diminuite')
+    } finally {
+      setLoadingCopieId(null)
+    }
+  }
+
+
 
   return (
     <div
@@ -99,8 +159,12 @@ export default function AdminPage() {
         setLibri={setLibri}
         showToast={showToast}
         ricerca={ricerca}
+        selectedLibroId={selectedLibroId}
         setRicerca={setRicerca}
         onElimina={elimina}
+        onIncrementa={incrementaCopie}
+        onDecrementa={decrementaCopie}
+        loadingCopieId={loadingCopieId}
       />
     </div>
   )

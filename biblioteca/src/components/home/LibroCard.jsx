@@ -1,11 +1,15 @@
+import { useNavigate } from 'react-router-dom'
+
+
 export default function LibroCard({ libro, onPrestito, isAdmin, onElimina }) {
     const disponibile = libro.quantita > 0;
+    const navigate = useNavigate()
 
     return (
         <div
             className={`position-relative h-100 d-flex flex-column overflow-hidden rounded-4 border ${disponibile
-                    ? 'border-success border-opacity-25'
-                    : 'border-secondary border-opacity-25'
+                ? 'border-success border-opacity-25'
+                : 'border-secondary border-opacity-25'
                 }`}
             style={{
                 background: '#0d0d0d',
@@ -57,8 +61,8 @@ export default function LibroCard({ libro, onPrestito, isAdmin, onElimina }) {
                     {libro.genere && (
                         <span
                             className={`badge rounded-pill px-3 py-2 border fw-normal ${disponibile
-                                    ? 'bg-success bg-opacity-10 text-success border-success border-opacity-25'
-                                    : 'bg-secondary bg-opacity-10 text-secondary border-secondary border-opacity-25'
+                                ? 'bg-success bg-opacity-10 text-success border-success border-opacity-25'
+                                : 'bg-secondary bg-opacity-10 text-secondary border-secondary border-opacity-25'
                                 }`}
                             style={{ fontSize: '0.8rem', letterSpacing: '.14em', alignSelf: 'flex-start' }}
                         >
@@ -98,8 +102,8 @@ export default function LibroCard({ libro, onPrestito, isAdmin, onElimina }) {
                             />
                             <span
                                 className={`${disponibile
-                                        ? 'text-success text-opacity-75'
-                                        : 'text-secondary text-opacity-75'
+                                    ? 'text-success text-opacity-75'
+                                    : 'text-secondary text-opacity-75'
                                     }`}
                                 style={{
                                     fontSize: '1rem',
@@ -204,50 +208,22 @@ export default function LibroCard({ libro, onPrestito, isAdmin, onElimina }) {
                             PRESTITO
                         </button>
                     )}
-
+                    {/* ADMIN → SOLO CONTROLLO (NO DELETE) */}
                     {isAdmin && (
-                       <div className="w-100">
-    <button
-        className="btn btn-outline-danger w-100 rounded-4 fw-semibold border-2
-        d-grid align-items-center"
-        style={{
-            gridTemplateColumns: '1fr auto 1fr',
-            minHeight: '46px',
-            fontSize: '0.68rem',
-            letterSpacing: '.05em',
-            padding: '0.65rem .75rem',
-            overflow: 'hidden'
-        }}
-        onClick={() => onElimina(libro.id)}
-        title="Elimina libro"
-    >
-        <span></span>
-
-        <span
-            className="text-center fw-normal fs-6"
-            style={{
-                minWidth: 0,
-                whiteSpace: 'nowrap'
-            }}
-        >
-            Elimina Libro
-        </span>
-
-        <span className="d-flex justify-content-end">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="13"
-                height="13"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-                className="flex-shrink-0"
-            >
-                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
-                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1z" />
-            </svg>
-        </span>
-    </button>
-</div>
+                        <button
+                            className="btn btn-outline-light w-100 rounded-4 fw-semibold border-2 d-flex justify-content-center align-items-center"
+                            style={{
+                                gridTemplateColumns: '1fr auto 1fr',
+                                minHeight: '46px',
+                                fontSize: '0.68rem',
+                                letterSpacing: '.05em',
+                                padding: '0.65rem .75rem',
+                                overflow: 'hidden'
+                            }}
+                            onClick={() => navigate('/admin', { state: { selectedLibroId: libro.id } })}
+                            title="Vai alla dashboard">
+                            <span className='fs-6'>Vai alla Dashboard</span>
+                        </button>
                     )}
                 </div>
             </div>

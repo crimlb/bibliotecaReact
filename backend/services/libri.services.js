@@ -74,5 +74,31 @@ const elimina = async (id) => {
   return { message: 'Libro eliminato' };
 };
 
+
+// Incrementa le copie disponibili di un libro
+const incrementaCopie = async (id) => {
+  await getById(id); // verifica esistenza
+
+  const result = await libriModel.incrementa(id);
+
+  return result.rows[0];
+};
+
+// Decrementa le copie disponibili di un libro
+const decrementaCopie = async (id) => {
+  const libro = await getById(id);
+
+  // Evita quantità negative
+  if (libro.quantita <= 0) {
+    const err = new Error('Quantità già a zero');
+    err.statusCode = 400;
+    throw err;
+  }
+
+  const result = await libriModel.decrementa(id);
+
+  return result.rows[0];
+};
+
 // ── Esportazione ──────────────────────────────────────────────
-module.exports = { getAll, getById, crea, getByISBN, aggiorna, elimina };
+module.exports = { getAll, getById, crea, getByISBN, aggiorna, elimina, incrementaCopie, decrementaCopie };

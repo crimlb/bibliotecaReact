@@ -87,6 +87,8 @@ export const libriAPI = {
   crea:     (dati)     => request('POST',   '/libri', dati),
   aggiorna: (id, dati) => request('PATCH',  `/libri/${id}`, dati),
   elimina:  (id)       => request('DELETE', `/libri/${id}`),
+  incrementaCopie: (id) => request('PATCH', `/libri/${id}/incrementa-copie`),
+  decrementaCopie: (id) => request('PATCH', `/libri/${id}/decrementa-copie`),
 }
 
 // ── Prestiti ──────────────────────────────────────────────────
