@@ -117,11 +117,22 @@ export default function FormLibro({
 
     } catch (err) {
 
-      setErrore(
-        err?.response?.data?.errore ||
-        err.message ||
-        'Errore'
-      )
+      const status = err?.status
+      const backendMessage = err?.data
+      //caso 400 o errore di validazione
+      if (status === 400) {
+        setErrore('⚠️ I dati inseriti non sono validi.')
+
+      }
+      if (status === 409){
+setErrore(backendMessage.errore)
+      }
+      if (status === 500) {
+        setErrore('Errore del server. Riprova più tardi.')
+      }
+      if (!status) {
+        setErrore('Errore di rete. Controlla la connessione.')
+      }
 
     } finally {
       setLoading(false)
