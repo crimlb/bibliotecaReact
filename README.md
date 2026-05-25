@@ -6,17 +6,6 @@
 
 ## 📸 Screenshot
 
-<img width="1919" height="859" alt="loginPage-biblioteca" src="https://github.com/user-attachments/assets/91112be9-ed28-4ba6-91de-cd66edeb9ddd" />
-<img width="1917" height="861" alt="registerPage" src="https://github.com/user-attachments/assets/5eb7560c-909a-48b1-b473-562262d5513a" />
-
-<img width="1919" height="869" alt="modalePrestitoLibri" src="https://github.com/user-attachments/assets/48f479ba-2570-444f-b3f5-94602b4a1fb8" />
-<img width="1919" height="866" alt="dashboardPrestiti" src="https://github.com/user-attachments/assets/a9bcb16f-eb90-4f88-9380-483f111b7e46" />
-<img width="1573" height="852" alt="dashboardPrestitiTable" src="https://github.com/user-attachments/assets/ff1174ec-694a-4adb-bf5c-e6ecfd85aa54" />
-<img width="1892" height="862" alt="homePageAdmin" src="https://github.com/user-attachments/assets/87a22a82-98f2-406c-8b6c-7ceb299784e1" />
-<img width="1914" height="869" alt="dashboardAdmin" src="https://github.com/user-attachments/assets/8f320b3f-9af5-4c50-aa03-188b83ca6b0b" />
-<img width="1888" height="861" alt="dashboardAdmin1" src="https://github.com/user-attachments/assets/4cd64e9c-f552-43a7-87d9-38d3e84c083c" />
-<img width="1893" height="868" alt="dashboardAdmin2" src="https://github.com/user-attachments/assets/e2aef0d9-a041-4cab-b737-8bafaa9a919d" />
-<img width="1883" height="861" alt="dashboardAdminFullVisual" src="https://github.com/user-attachments/assets/816e2da2-fa87-4296-bae9-986c4de3cb34" />
 
 
 
