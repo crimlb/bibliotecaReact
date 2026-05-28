@@ -98,11 +98,17 @@ Il progetto simula un’applicazione reale con architettura scalabile, autentica
 ## 🧱 Architettura
 
 Frontend (React)
+
    ↓
+   
 API REST (Express)
+
    ↓
+   
 Service Layer
+
    ↓
+   
 Model Layer (PostgreSQL)
 
 ---
