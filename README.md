@@ -4,13 +4,13 @@ Web app full-stack per la gestione di un catalogo librario e sistema di prestiti
 
 **Stack:** React · Node.js · Express · PostgreSQL
 
----
+
 
 ## 🚀 Demo
 
 - 🌐 Frontend: https://biblioteca-react-nine.vercel.app/login
 
----
+
 
 ## 📸 Preview
 
@@ -39,7 +39,7 @@ Web app full-stack per la gestione di un catalogo librario e sistema di prestiti
 <img width="1897" height="867" alt="9 dashboardAdmin1" src="https://github.com/user-attachments/assets/6e7b1563-3be7-4a0a-8242-117567dada93" />
 <img width="1892" height="865" alt="10 dashboardAdmin2" src="https://github.com/user-attachments/assets/5473d916-19ae-479d-8f36-45109b3ed94e" />
 
----
+
 
 ## 🧠 Overview del progetto
 
@@ -58,7 +58,6 @@ Gli amministratori possono invece:
 
 Il progetto simula un’applicazione reale con architettura scalabile, autenticazione sicura e separazione delle responsabilità tra frontend e backend.
 
----
 
 ## ✨ Funzionalità principali
 
@@ -98,7 +97,6 @@ Il progetto simula un’applicazione reale con architettura scalabile, autentica
 
 ## 🧱 Architettura
 
-```text
 Frontend (React)
    ↓
 API REST (Express)
@@ -108,6 +106,7 @@ Service Layer
 Model Layer (PostgreSQL)
 
 ---
+
 
 ## 💡 Cosa dimostra questo progetto
 
@@ -130,4 +129,3 @@ Model Layer (PostgreSQL)
 ## 📄 Licenza
 
 Questo progetto è a scopo didattico e di portfolio. Non è consentito il riutilizzo del codice senza autorizzazione.
-
