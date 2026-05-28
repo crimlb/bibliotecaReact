@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+#root{
+  width: 100%;
+  min-height: 100vh;
+}
+
+.login{
+  max-width: 400px;
+}
+
+
+@keyframes fadeIn {
+  from { transform: translateY(-10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9998;
+}
+
+.modal-box {
+  width: 100%;
+  max-width: 420px;
+
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  transition: 0.2s ease;
+}
+
+.stat-card {
+transition: .25s;
+}
+.stat-card:hover {
+transform: translateY(-4px);
+}
+.table > tbody > tr {
+transition: .2s;
+}
+.table > tbody > tr:hover {
+background-color: rgba(25, 135, 84, 0.08);
+}
+.form-control {
+min-height: 48px;
+}
+.card {
+backdrop-filter: blur(8px);
+}
+
+
