@@ -14,12 +14,12 @@ Web app full-stack per la gestione di un catalogo librario e sistema di prestiti
 
 ## 📸 Preview
 
-- Login e registrazione utenti
+- Login/registrazione utenti
   
 <img width="1919" height="859" alt="1 loginPage-biblioteca" src="https://github.com/user-attachments/assets/aa4ebec3-27ff-4317-a3ba-24ec9f6c9cee" />
 <img width="1917" height="861" alt="2 registerPage" src="https://github.com/user-attachments/assets/00486ef9-d8f8-4aa1-ac8f-934f74734318" />
 
-- Catalogo libri con ricerca e disponibilità
+- Catalogo libri con ricerca
   
 <img width="1897" height="861" alt="3 HomePageUtente-catalogo" src="https://github.com/user-attachments/assets/184e3712-9741-4e30-b3c6-dc5bbc15c1cb" />
 
@@ -27,13 +27,13 @@ Web app full-stack per la gestione di un catalogo librario e sistema di prestiti
   
 <img width="1919" height="869" alt="4 modalePrestitoLibri" src="https://github.com/user-attachments/assets/86f0708d-50ca-4a97-9b2c-3749ee30579c" />
 
-- Dashboard utente con storico prestiti
-  
+- Dashboard utente
+
 <img width="1895" height="861" alt="5 dashboardPrestitiUtente1" src="https://github.com/user-attachments/assets/08e4fe1d-6fdf-4192-80cf-ae36f1494f91" />
 <img width="1893" height="727" alt="6 dashboardPrestitiUtente2" src="https://github.com/user-attachments/assets/f4d2c96b-17ac-410c-aea2-3aabc77f65b0" />
 <img width="1902" height="866" alt="7 dashboardPrestitiUtenti3" src="https://github.com/user-attachments/assets/236c06e6-b780-4009-a8ad-240ebcf672c7" />
 
-- Dashboard admin per gestione catalogo e utenti
+- Dashboard admin
   
 <img width="1902" height="870" alt="8 HomePageAdmin-catalogo" src="https://github.com/user-attachments/assets/c111bbe0-eb5c-42f0-902e-52292de1f4b0" />
 <img width="1897" height="867" alt="9 dashboardAdmin1" src="https://github.com/user-attachments/assets/6e7b1563-3be7-4a0a-8242-117567dada93" />
@@ -106,3 +106,28 @@ API REST (Express)
 Service Layer
    ↓
 Model Layer (PostgreSQL)
+
+---
+
+## 💡 Cosa dimostra questo progetto
+
+- Full-stack development end-to-end
+- Autenticazione JWT e gestione ruoli (RBAC)
+- Architettura backend a livelli
+- Integrazione API REST con frontend React
+- Gestione stato e UI dinamica
+
+
+## 👩‍💻 Autrice
+
+**[Cristina Buffone]**
+- GitHub: [@crimlb](https://github.com/crimlb)
+- LinkedIn: [linkedin.com/in/cristina-buffone-576893316/](https://www.linkedin.com/in/cristina-buffone-576893316/)
+- Email: crimlb87@gmail.com
+
+
+
+## 📄 Licenza
+
+Questo progetto è a scopo didattico e di portfolio. Non è consentito il riutilizzo del codice senza autorizzazione.
+
