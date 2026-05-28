@@ -26,7 +26,7 @@ const registra = async ({ nome, cognome, email, password }) => {
   const hash   = await bcrypt.hash(password, SALT_ROUND);
 
   // ruolo = 'utente' è hardcoded: non viene letto dal body
-  const result = await utenteModel.create({ nome, cognome, email, password: hash, ruolo: 'admin' });
+  const result = await utenteModel.create({ nome, cognome, email, password: hash, ruolo: 'utente' });
   return result.rows[0];
 };
 

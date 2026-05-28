@@ -154,6 +154,7 @@ const create = ({ titolo, autore, isbn, anno_pubblicazione, genere, quantita, di
     [titolo, autore, isbn, anno_pubblicazione, genere, quantita, disponibile]
   );
 
+
 // Aggiorna i metadati di un libro.
 // COALESCE($1, titolo) significa: usa $1 se non è null, altrimenti tieni il valore attuale.
 // Questo permette aggiornamenti parziali (PATCH): si manda solo ciò che cambia.
