@@ -60,14 +60,19 @@ const limiterGlobale = rateLimit({
 app.use(express.json());
 
 
-app.use(helmet());
+
 
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://biblioteca-react-nine.vercel.app'
-  ]
+    'https://biblioteca-react-nine.vercel.app',
+    'https://biblioteca-react-mw2c1tcjy-cristina-dev.vercel.app'
+  ],
+  credentials: true
 }));
+
+
+app.use(helmet());
 
 
 app.use(limiterGlobale);
